@@ -1,0 +1,71 @@
+/*
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 900;
+    font-display: swap;
+    src: local('Pretendard Black'), url('/public/css/woff/Pretendard-Black-be045513806d195d9da127d2e0c29c7f.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 800;
+    font-display: swap;
+    src: local('Pretendard ExtraBold'), url('/public/css/woff/Pretendard-ExtraBold-937e6e15d1808255ebb6a76a30ab1fe0.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-display: swap;
+    src: local('Pretendard Bold'), url('/public/css/woff/Pretendard-Bold-4148827afc41275424786abcfb3920d2.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-display: swap;
+    src: local('Pretendard SemiBold'), url('/public/css/woff/Pretendard-SemiBold-761464f64f892df104f57afe2dceeefe.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-display: swap;
+    src: local('Pretendard Medium'), url('/public/css/woff/Pretendard-Medium-68cef608a1f81f261072a473ee22a0db.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-display: swap;
+    src: local('Pretendard Regular'), url('/public/css/woff/Pretendard-Regular-bcaa3a326de18d845ef56ea101c72211.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-display: swap;
+    src: local('Pretendard Light'), url('/public/css/woff/Pretendard-Light-6cb5e4973237865e6a84cda94b02fb88.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 200;
+    font-display: swap;
+    src: local('Pretendard ExtraLight'), url('/public/css/woff/Pretendard-ExtraLight-6dcfca19f1c464c8e471f2d44269e0ff.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 100;
+    font-display: swap;
+    src: local('Pretendard Thin'), url('/public/css/woff/Pretendard-Thin-039024ed5ceb3a8468f1c230e120b348.woff') format('woff');
+}

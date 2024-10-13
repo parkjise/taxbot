@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="apple-touch-icon" href="images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="images/ico/favicon-02b9f09afe4391075942e41c3bf78891.ico">
+
+  <link rel="stylesheet" type="text/css" href="css/pretendard-4a0bc9cf1d39fcbaa382206e63d88fe6.css" /><!-- Pretendard -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"><!-- XEicon -->
+
+  <!-- BEGIN: Vendor CSS-->
+  <link rel="stylesheet" type="text/css" href="css/vendors.min-8c6457bd21bbdb914cd8846bdcd9f41c.css">
+  <!-- END: Vendor CSS-->
+
+  <!-- BEGIN: Theme CSS-->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min-91edafec620f4cb7c9c1613a2814c733.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-extended.min-46f95d67c3792595a125745802734c07.css">
+  <link rel="stylesheet" type="text/css" href="css.min-a23b64a3623ddcfaef0b62b27468330b.css">
+  <link rel="stylesheet" type="text/css" href="css/components.min-584bfda084761de613adaaa2ca018571.css">
+  <link rel="stylesheet" type="text/css" href="css/vertical-menu-modern-1bd273fc0de66abf6aa152485246c07b.css">
+  <link rel="stylesheet" type="text/css" href="css/palette-gradient.min-47e3c349da589b1af817252c1eed62b7.css">
+  <link rel="stylesheet" type="text/css" href="css/card-statistics.min-b28b35899d30b05f2e80de929ae40b56.css">
+  <link rel="stylesheet" type="text/css" href="css/vertical-timeline.min-2a01b2b56c61876561ae99d9f69fd965.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- END: Theme CSS-->
+
+  <!-- BEGIN: Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="css/style-69afff8b20cb35ce9551739a4d5984f8.css">
+  <!-- END: Custom CSS-->
+</head>
+<body>
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="d-flex">
+                <h4 class="modal-title">발송 </h4><h4 class="modal-title" id="sendModalCnt">(1/1)</h4>
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="modal-body send-modal-wrap">
+            <div class="modal-item send-modal-item info-item">
+                <div class="table-responsive">
+                    <table class="table table-bordered th-color" style="max-width:850px">
+                        <colgroup>
+                            <col width="30%">
+                            <col width="70%">
+                        </colgroup>
+                        <tbody>
+                        <tr id="sendModalDocTypeRow">
+                            <th class="text-left" id="sendModalDocTypeTitle">납부서종류</th>
+                            <td class="text-left" id="sendModalDocType">원천징수이행상황신고서</td>
+                        </tr>
+                        <tr id="sendModalCorpNameRow">
+                            <th class="text-left" id="sendModalCorpNameTitle">수임처</th>
+                            <td class="text-left" id="sendModalCorpName">주식회사 쇼닥터 (106-86-81493)</td>
+                        </tr>
+                        <tr id="sendModalTxnrmYmRow">
+                            <th class="text-left" id="sendModalTxnrmYmTitle">과세년월</th>
+                            <td class="text-left" id="sendModalTxnrmYm">2024년 09월</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="inner-item">
+                    <div class="d-flex justify-content-between">
+                      <h5 class="cm-tit-middle-16 mb-1">1. 고객 연락처 입력</h5>
+                      <div class="d-flex mb-05">
+                        <button class="cm-btn-type positive-btn1-2 medium" data-toggle="modal" data-target="#modal_info" ><i class="feather" data-feather="edit"></i>연락처 정보</button>
+                        <button class="cm-btn-type basic-btn medium ml-05"><i class="feather" data-feather="trash-2"></i>삭제</button>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover" id="certTable">
+                          <colgroup>
+                              <col width="50"><!-- 선택 -->
+                              <col width="200"><!-- 성명 -->
+                              <col width="250"><!-- 휴대폰번호 -->
+                              <col width="300"><!-- 이메일주소 -->
+                              <col width="200"><!-- 발송채널 -->
+                          </colgroup>
+                          <thead>
+                          <tr>
+                              <th data-orderable="false" class="sort-none">
+                                  <label>
+                                      <input type="checkbox" onclick="">
+                                  </label>
+                              </th>
+                              <th>성명</th>
+                              <th>휴대폰번호</th>
+                              <th>이메일주소</th>
+                              <th>발송채널</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <label>
+                                  <input type="checkbox" onclick="">
+                                </label>
+                              </td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td>
+                                <div class="cm-custom-input">
+                                  <fieldset class="form-group checkboxs justify-content-center">
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" checked=""><span>알림톡</span>
+                                      </label>
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" ><span>문자</span>
+                                      </label>
+                                      <label>
+                                          <input type="checkbox" name="checkbox" id="" ><span>이메일</span>
+                                      </label>
+                                  </fieldset>
+                              </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <label>
+                                  <input type="checkbox" onclick="">
+                                </label>
+                              </td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td>
+                                <div class="cm-custom-input">
+                                  <fieldset class="form-group checkboxs justify-content-center">
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" checked=""><span>알림톡</span>
+                                      </label>
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" ><span>문자</span>
+                                      </label>
+                                      <label>
+                                          <input type="checkbox" name="checkbox" id="" ><span>이메일</span>
+                                      </label>
+                                  </fieldset>
+                              </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <label>
+                                  <input type="checkbox" onclick="">
+                                </label>
+                              </td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td><input type="text" class="form-control medium mr-05" name="" id="" placeholder=""></td>
+                              <td>
+                                <div class="cm-custom-input">
+                                  <fieldset class="form-group checkboxs justify-content-center">
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" checked=""><span>알림톡</span>
+                                      </label>
+                                      <label class="mr-1">
+                                          <input type="checkbox" name="checkbox" id="" ><span>문자</span>
+                                      </label>
+                                      <label>
+                                          <input type="checkbox" name="checkbox" id="" ><span>이메일</span>
+                                      </label>
+                                  </fieldset>
+                              </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </div>
+<!--                            <div class="cm-plus-txt-box mb-1">-->
+<!--                                <ul class="txt-list">-->
+<!--                                    <li class="d-none" id="channelDanger">-->
+<!--                                        <p class="txt-dotted" id="channelDangerText">-->
+<!--                                        </p>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                </div>
+                <div class="inner-item" id="sendModalFileWrap">
+                    <h5 class="cm-tit-middle-16 mb-1" id="sendModalFilesTitle">2. 신고서류 및 첨부파일 추가</h5>
+                    <div class="send-modal-attach">
+                        <div class="right-box">
+                            <div class="pb-05" id="sendModalCheckAll" style="flex-shrink:0;">
+                                <fieldset class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" id="fileCheckAll"> <span>전체선택</span>
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <fieldset class="checkbox" style="height:200px;" id="sendModalFiles"><lable><input name="pdfInfoCheck" type="checkbox" onclick="removeUploadFileModal(this);" checked=""><a href="/pdfViewer/u6mWFwNHTZOWB1t1tp4GNQ--" target="_blank" data-pdfid="10120242504192774035_원천징수이행상황신고서_사업소득세_20241010">   사업소득세_20241010</a></lable><lable><input name="pdfInfoCheck" type="checkbox" onclick="removeUploadFileModal(this);" checked=""><a href="/pdfViewer/vjUY9H1_weCZMeIb1SKjmg--" target="_blank" data-pdfid="1111013024947797984_지방소득세(특별징수)_지방소득세납부서_20241010">   지방소득세납부서_20241010</a></lable></fieldset>
+                        </div>
+                        <div class="w-100 mt-1" id="sendModalFileAddDiv">
+                            <button class="cm-btn-type positive-btn1-1 medium mb-05" id="uploadPopupBtn" data-toggle="modal" data-target="#uploadPopup"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> 첨부하기</button>
+                            <button class="cm-btn-type positive-btn1-1 medium mb-05 d-none" id="wetaxFileButton" onclick="setWetaxFileSelectPopup()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>지방소득세납부서 수동첨부</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-item send-modal-item mobile-device-item">
+                <div class="mobile-device-cover">
+                    <div class="inner-item h-px-530">
+                        <h5 class="logo mb-1"><img src="/common/custom-assets/images/common/mobile_logo.png" alt="택스봇"></h5>
+                        <div class="txt-box height-400 mb-1" id="sendModalMessageArea" style="overflow-y:scroll;">2024년 09월 원천징수세액 납부 안내<br><br>주식회사 쇼닥터님,<br>세무법인 위드택스입니다.<br><br>2024년 09월 원천징수세액 (2종)의 납부금액과 납부기한을 안내드립니다.<br><br>-납부금액<br>82,500원<br><br>-납부기한<br>2024-10-10<br><br>감사합니다.<br><br>세무법인 위드택스<br><input type="text" class="form-control medium" id="sendModalManagerPhoneNo" value="025361260"><input type="text" class="form-control medium" id="sendModalManagerMail" value="ctajune90@withtax2020.com"><input type="hidden" id="sendModalManagerId" value="2_withtax2001"></div>
+                        <button class="cm-btn-type positive-btn2-1 medium w-100" id="sendModalButton" onclick="window.open('/pdfListView?rcatNoHometax=10120242504192774035&amp;rcatNoWetax=1111013024947797984')">첨부문서 보기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-item send-modal-item btn-item">
+                <button id="sendModalPrevBtn" class="d-none" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                <button id="sendModalNextBtn" class="d-none" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </div>
+        </div>
+        <div class="modal-footer flex-center-center">
+            <button class="cm-btn-type basic-btn medium" data-dismiss="modal" aria-label="Close" id="sendModalCancelBtn">취소</button>
+            <button type="button" id="sendModalSendBtn" class="cm-btn-type positive-btn1-1 medium" onclick="sendModalInputCheck(0,'send')">발송</button>
+        </div>
+    </div>
+</div>
+<!-- Modal :: 첨부서류 수집완료 -->
+<div class="modal fade  " id="modal_info" >
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content modal-loading-content">
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover" id="certTable">
+                  <colgroup>
+                      <col width="50"><!-- 선택 -->
+                      <col width="200"><!-- 성명 -->
+                      <col width="250"><!-- 휴대폰번호 -->
+                      <col width="300"><!-- 이메일주소 -->
+                      <col width="200"><!-- 발송채널 -->
+                  </colgroup>
+                  <thead>
+                  <tr>
+                      <th data-orderable="false" class="sort-none">
+                          <label>
+                              <input type="checkbox" onclick="">
+                          </label>
+                      </th>
+                      <th>성명</th>
+                      <th>휴대폰번호</th>
+                      <th>이메일주소</th>
+                      <th>발송채널</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer flex-center-center">
+              <button type="button" class="cm-btn-type basic-btn medium" onclick="sendModalCancel();">취소</button>
+              <button type="button" class="cm-btn-type positive-btn1-1 medium" id="SendSinglePdfBtn">확인</button>
+          </div>
+      </div>
+  </div>
+</div>
+    <script script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://kit.fontawesome.com/6584921572.js" crossorigin="anonymous"></script>
+
+    <!-- 필수 라이브러리 JS File -->
+    <script src="jsjquery.min-3.7.1-c9a1b0aa0167c8a4df724d18d06814a8.js"></script>
+    <script src="jsjquery.cookie.min-1.4.1-23d834419c7ccced820e192be7081228.js"></script>
+    <script src="jsjquery-ui.min-9d5f1f89a13c07d0f24332c9fca2b24c.js"></script>
+    <script src="jsjquery.counterup.min-28225c8fb117c6dd827451c5d0037c8a.js"></script>
+
+    <!-- BEGIN: Theme JS-->
+    <script src="js/vendors.min-c774ee3e7ff874b6a81916d8d392b365.js"></script>
+    <script src="js/app-menu.min-d283d47386e778f8b463fd60fece9e66.js"></script>
+    <script src="js/app.min-cf2a2b81e029f678b6d4bac6faff6937.js"></script>
+    <script src="js/customizer.min-30d00c1bde7251b6124f1bbf5b9e874a.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- public 공용 JS File -->
+    <script src="js/jssweetalert2.all.min-8cfd6a3ce1ab59addb8c5fdc9b039022.js"></script>
+    <script src="js/common-90ec39445f8be86b865c1214db6eb6e8.js"></script>
+    <script src="js/util-2698dc888f5ce7e4fec7b1206c764d14.js"></script>
+    <script src="js/sweetalert-48391ae138b9ff06d01cf7237c3c0d7f.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z6SRLJ5F5"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="js/dropzone.min-616020662a4bca195ffbb13aec7295ef.css">
+
+    <script src="js/withhold-97d90b6095947c1e8a1092c111947b78.js"></script>
+    <script src="js/sendModal-7cfdb151d77c7c9319308e48cfb2c6b7.js"></script>
+
+    <script src="js/dropzone.min-3e760acc2cccd25aa9945f900bdbdaab.js"></script>
+    <script src="js/dropzone.min-8ac3214577a86644878b6f4099461ab3.js"></script>
+
+
+
+    <!-- private 공용 JS File -->
+    <script src="js/code-a75a53c2689e572450c3f227e249ef04.js"></script>
+    <script src="js/cert-4e9886c765cf00d46fa0ddcd27846a2a.js"></script>
+    <script src="js/header-8c9afd617e1acc5e885415168c26cc6e.js"></script>
+    <script src="js/common-86c6c75060632aaa8c049dd336f27b34.js"></script>
+    <script src="js/loginCheckModal-ebf6ee0c078c9d79dcc9de6b26371cf7.js"></script>
+
+    <!--excel 다운로드-->
+    <script src="js/xlsx.full.min-96f35e06d33725dfff761ff95b98418e.js"></script>
+    <script src="js/FileSaver.min-988ed42168dce8f3315a1c46f188ef4c.js"></script>
+</body>
+</html>
