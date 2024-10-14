@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="apple-touch-icon" href="https://taxbot.infotech.co.kr/common/app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://taxbot.infotech.co.kr/common/app-assets/images/ico/favicon-02b9f09afe4391075942e41c3bf78891.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/public/css/pretendard-4a0bc9cf1d39fcbaa382206e63d88fe6.css" /><!-- Pretendard -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"><!-- XEicon -->
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/vendors/css/vendors.min-8c6457bd21bbdb914cd8846bdcd9f41c.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/bootstrap.min-91edafec620f4cb7c9c1613a2814c733.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/bootstrap-extended.min-46f95d67c3792595a125745802734c07.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/colors.min-a23b64a3623ddcfaef0b62b27468330b.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/components.min-584bfda084761de613adaaa2ca018571.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/core/menu/menu-types/vertical-menu-modern-1bd273fc0de66abf6aa152485246c07b.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/core/colors/palette-gradient.min-47e3c349da589b1af817252c1eed62b7.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/pages/card-statistics.min-b28b35899d30b05f2e80de929ae40b56.css">
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/css/pages/vertical-timeline.min-2a01b2b56c61876561ae99d9f69fd965.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/custom-assets/css/style-69afff8b20cb35ce9551739a4d5984f8.css">
+    <!-- END: Custom CSS-->
+
+
+<link rel="stylesheet" type="text/css" href="https://taxbot.infotech.co.kr/common/app-assets/vendors/css/file-uploaders/dropzone.min-616020662a4bca195ffbb13aec7295ef.css">
+</head>
+<body>
+    <div data-toggle="modal" data-target="#sendModal">
+        1111
+    </div>
+    
+    <!-- Modal :: 인증서 -->
+    <div class="modal fade" id="certMainModal" tabindex="-1" role="dialog" aria-labelledby="certMainModal"
+         aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="certModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <h5 class="mb-1 point-color fs-14">
+                        <i class="feather w-px-15" data-feather="info"></i> <span id="certModalText"></span></h5>
+                    <div>
+                        <div class="table-responsive vertical-scroll position-relative mb-2" style="max-height:300px;">
+                            <table class="table table-bordered th-color table-hover datatable-select"
+                                   id="certModalTable">
+                                <colgroup>
+                                    <col width="44">
+                                    <col width="74">
+                                    <col width="*">
+                                    <col width="100">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>발급기관</th>
+                                    <th>인증서명</th>
+                                    <th>만료일</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <h6 class="mb-05">인증서 비밀번호</h6>
+                        <input type="password" class="form-control medium" placeholder="인증서 비밀번호" id="certModalSignPw">
+                        <p class="pt-05" id="certModal4insureMessage" style="display: block;"><i class="feather w-px-15" data-feather="alert-circle"></i> 기관별 인증서가 다른 경우, <span class="point-color">4대보험통합조회&gt;마이페이지&gt;4대보험이용정보</span> 에서 수정하시기 바랍니다.</p>
+                    </div>
+                    <div id="certModalhometaxDiv">
+                        <div class="mb-2">
+                            <h6 class="mb-05">세무관리인 관리번호</h6>
+                            <input type="text" class="form-control medium" placeholder="세무관리인 관리번호" id="certModalAgentIdInput"
+                                   disabled>
+                        </div>
+                        <div class="mb-2">
+                            <h6 class="mb-05">세무관리인 비밀번호</h6>
+                            <input type="text" class="form-control medium" placeholder="세무대리인 비밀번호" id="certModalAgentPwdInput">
+                        </div>
+                    </div>
+                    <div id="certModal4insureDiv">
+                        <div class="pt-05">
+                            <h6 class="mb-05">업무대행 기관정보</h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered th-color tbl-txt-left">
+                                <colgroup>
+                                    <col width="30%">
+                                    <col width="70%">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th>사업장관리번호</th>
+                                    <td><input id="mgmtNo" type="text" class="form-control medium" placeholder="사업장관리번호" oninput="Formatter.toMgmtNo(this)"/></td>
+                                </tr>
+                                <tr>
+                                    <th>고용산재 로그인구분</th>
+                                    <td>
+                                        <div class="cm-custom-select">
+                                            <select class="custom-select form-control select-medium" id="loginGb" onchange="loginGbChange()">
+                                                <option value="" selected>-선택-</option>
+                                                <option value="개인">대표자/소속직원</option>
+                                                <option value="법인">사업장명의인증서</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>주민등록번호</th>
+                                    <td><input id="socialNo" type="text" class="form-control medium" placeholder="주민등록번호" oninput="Formatter.toSocialNo(this)" disabled/></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="certModalCancelBtn" class="cm-btn-type basic-btn medium" data-dismiss="modal">취소</button>
+                    <button type="button" id="certConfirmBtn" class="cm-btn-type positive-btn1-1 medium">다음</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  사용여부 확인  -->
+    <!-- 커스텀 모달 팝업 modal -->
+    <div class="modal fade" id="alert_modal_default" tabindex="-1" role="dialog" aria-labelledby=""
+         aria-hidden="true" style="z-index: 1060;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="alert_modal_default_title"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="alert_modal_default_context"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cm-btn-type basic-btn medium" data-dismiss="modal"
+                            id="alert_modal_default_cancel_btn">취소
+                    </button>
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium" data-dismiss="modal"
+                            id="alert_modal_default_check_btn">확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 커스텀 모달 팝업 modal -->
+
+    <!--  사용여부 확인  -->
+    <!-- 커스텀 모달 팝업 modal -->
+    <div class="modal fade" id="alert_modal_confirm" tabindex="-1" role="dialog" aria-labelledby=""
+         aria-hidden="true" style="z-index: 1060;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="alert_modal_confirm_title"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="alert_modal_confirm_context"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium" data-dismiss="modal"
+                            id="alert_modal_confirm_check_btn">확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 커스텀 모달 팝업 modal -->
+
+    <!-- 공지사항 Modal -->
+    <div class="modal fade" id="noticePopup" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">공지사항</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="mb-1">
+                        확인하실 주요 공지사항이 있습니다.<br>
+                        확인 버튼 클릭 시, 해당 공지게시판으로 이동합니다.</h5>
+                    <h5 class="cm-tit-middle-16">ㆍ제목 : <span id="noticePopupTitle" class="fw-700 primary-500"></span></h5>
+                    <h5 class="cm-tit-middle-16">ㆍ게시일 : <span id="noticePopupRegistrationDate"></span></h5>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" class="cm-btn-type basic-btn medium" data-dismiss="modal">취소</button>
+                        <button type="button" class="cm-btn-type positive-btn1-1 medium" id="noticePopupBtn" onclick="">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- 인증서 재등록 모달-->
+    <div class="modal fade" id="certValidModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">인증서 오류 안내</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="closeWin('certValidModal')">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="certValidContents">
+                    <div class="d-flex justify-content-between error-box-wrap mb-1">
+                        <div class="text-left error-box">
+                            <h5></h5>
+                            <p>선택하신 공인인증서의 유효기간이 만료되었습니다.</p>
+                        </div>
+                        <button class="cm-btn-type positive-btn1-1 medium">
+                            재등록
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 무료이용 기간 종료 안내 이미지 Modal -->
+    <div class="modal fade show" id="freeEnd_modal" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body modal_inner_content px-0 py-0">
+                    <div class="">
+                        <img src="/public/img/pop_freeEnd_1.png">
+                        <button class="btn btn-sm-white-pop" onclick="extendProTrial()">무료체험 10일 연장</button>
+                        <button class="btn btn-sm-pop" onclick="clickBasicTaxcredit(&#39;freeEnd_modal&#39;)">택스봇프로 신청</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="checkbox" value="checkbox" name="chkbox" id="endDateCheck_freeEnd_modal">
+                    <label for="endDateCheck_freeEnd_modal">오늘 하루 그만보기</label>
+                    <a href="#none" class="btnClose" data-dismiss="modal" onclick="closeWin('freeEnd_modal')">
+                        <span>[닫기]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--서비스 무료이용 기간 1 modal -->
+    <div class="modal fade" id="endDateCheckModal_1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">서비스 무료이용 기간 안내</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="">
+                        현재 서비스 무료이용 기간입니다.<br>
+                        무료 기간 종료시 서비스가 중지될 예정입니다.<br>
+                        종료 후에도 서비스 이용을 희망하신다면 하단의 자동이체 신청서를<br>
+                        다운로드 후 작성하여 카카오톡 고객센터를 통해 보내주시기 바랍니다.
+                    </p>
+                    <div class="py-1">
+                        <button type="button" onclick="location.href='/file/download/택스봇_자동이체이용신청서.doc'" class="cm-btn-type positive-btn2-1 medium">
+                            <i class="feather" data-feather="download"></i> 신청서 다운로드
+                        </button>
+                        <button type="button" onclick="window.open('https://pf.kakao.com/_xceePxj')" class="cm-btn-type positive-btn1-1 medium">
+                            <i class="feather" data-feather="help-circle"></i> 카카오톡 고객센터 바로가기
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="checkbox" value="checkbox" name="chkbox" id="endDateCheck_1"/><label for="endDateCheck_1">오늘 하루 그만보기 </label>
+                    <a href="#" class="btnClose" data-dismiss="modal" onclick="closeWin(1)">
+                        <span>[닫기]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--서비스 무료이용 기간 2 modal -->
+    <div class="modal fade" id="endDateCheckModal_2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title fw-500">서비스 무료이용 기간 안내</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="closeWin(2)">×</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>
+                        현재 서비스 무료이용 기간입니다.<br>
+                        무료 기간 종료시 서비스가 중지될 예정입니다.<br>
+                        종료 후에도 서비스 이용을 희망하신다면
+                        하단의 자동이체 신청서 다운로드 후
+                        작성하여 보내주시기 바랍니다.<br>
+                    </p>
+
+                    <h6 class="fw-500 py-1">
+                        서비스 종료 예정일 <span class="point-color" id="endDate">YYYY 년 MM 월 DD 일</span>
+                    </h6>
+
+                    <button type="button" onclick="location.href='/file/download/택스봇_자동이체이용신청서.doc'" class="cm-btn-type positive-btn2-1 medium" data-dismiss="modal">
+                        <i class="feather" data-feather="download"></i>
+                        신청서 다운로드
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <input type="checkbox" value="checkbox" name="chkbox" id="endDateCheck_2"/><label for="endDateCheck_2">오늘 하루 그만보기 </label>
+                    <a href="#" class="btnClose" data-dismiss="modal" onclick="closeWin(2)">
+                        <span>[닫기]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--무료이용 기간 종료 modal 3-->
+    <div class="modal fade" id="endDateCheckModal_3" tabindex="-1" role="dialog" aria-labelledby=""
+         aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">서비스 무료이용 기간 종료 안내</h6>
+                </div>
+                <div class="modal-body text-center">
+                    <p>
+                        무료 이용 기간이 종료 되었습니다.<br>
+                        서비스 이용을 희망하신다면 하단의 자동이체 신청서를<br>
+                        다운로드 후 작성하여 카카오톡 고객센터를 통해 보내주시기 바랍니다.
+                    </p>
+                    <div class="my-1">
+                        <button type="button" onclick="location.href='/file/download/택스봇_자동이체이용신청서.doc'" class="cm-btn-type positive-btn2-1 medium">
+                            <i class="feather" data-feather="download"></i> 신청서 다운로드
+                        </button>
+                        <button type="button" onclick="window.open('https://pf.kakao.com/_xceePxj')" class="cm-btn-type positive-btn1-1 medium">
+                            <i class="feather" data-feather="help-circle"></i> 카카오톡 고객센터 바로가기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--무료이용 기간 종료 modal end -->
+
+    <!-- 프로 서비스신청 Modal -->
+    <div class="modal fade" id="modal_pro_service_application" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">택스봇 프로 서비스 신청</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="pb-1 text-center">
+                        통화 가능한 시간과 연락처를 남겨주시면<br>담당자가 직접 연락드리겠습니다.
+                    </p>
+                    <table class="table table-bordered th-color tbl-txt-left">
+                        <colgroup>
+                            <col width="30%"/>
+                            <col width="70%"/>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th>통화 가능시간</th>
+                            <td>
+                                <div class="cm-custom-select">
+                                    <select class="custom-select select-medium" id="callTime" name="">
+                                        <option value="9">9:00~9:59</option>
+                                        <option value="10">10:00~10:59</option>
+                                        <option value="11">11:00~11:59</option>
+                                        <option value="12">12:00~12:59</option>
+                                        <option value="13">13:00~13:59</option>
+                                        <option value="14">14:00~14:59</option>
+                                        <option value="15">15:00~15:59</option>
+                                        <option value="16">16:00~16:59</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td><input class="form-control medium" type="tel" id="callTel" value="" size="23" placeholder="-없이 숫자만 입력해주세요."></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cm-btn-type basic-btn medium" data-dismiss="modal">취소</button>
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium" onclick="applicateProService()">서비스 신청</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 프로 서비스신청 안내 Modal -->
+    <div class="modal fade" id="modal_pro_service_info" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">서비스 신청 안내</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h5 class="cm-tit-large-18">고객과 직접 소통 가능한 '전용계정'이 필요하신가요?</h5>
+                    <p class="cm-txt pt-05 pb-1">택스봇 프로는 세무사무소 전용 계정(카카오톡 채널, 이메일)을 통해<br>원활한 고객소통 및 이력 관리를 지원하는 프리미엄 서비스 입니다.</p>
+                    <button type="button" class="cm-btn-type positive-btn2-1 medium"
+                            onclick="location.href='/brand/pro'" id="sendBtn">택스봇 프로 알아보기
+                    </button>
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium"
+                            data-dismiss="modal" onclick="openModal(&#39;modal_pro_service_application&#39;)">
+                        서비스 신청하기
+                    </button>
+                </div>
+                <div class="modal-footer justify-content-between bg-color-yellow px-1 py-02">
+                    <p class="cm-txt mr-1">카카오톡 채널이 없으신가요?</p>
+                    <button type="button" class="cm-btn-type basic-btn medium" data-dismiss="modal"
+                            onclick="window.open(&#39;https://business.kakao.com/info/kakaotalkchannel/&#39;)">
+                        <i class="feather" data-feather="info"></i> 카카오톡 채널 신청 안내
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 담당자 확인완료 start -->
+    <div class="modal fade" id="managerLoginConfirm" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">담당자 확인완료</h4>
+                    <i class="xi-close"></i>
+                </div>
+                <form action="#">
+                    <div class="modal-body">
+                        <h5 class="mb-2">
+                            <span>{담당자id}</span>님 환영합니다.
+                        </h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cm-btn-type positive-btn1-1 medium">확인</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 담당자 확인완료 end -->
+
+    <!-- Modal :: Taxbot-R Cloud 이동 -->
+    <div class="modal fade" id="cloudR_move" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">심화진단(Taxbot-R Cloud)</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="pb-2 text-center">
+                        세액공제예상액 간편결과보다 자세한 결과를 확인하기 위해<br>Taxbot-R Cloud로 이동합니다.<br>
+                        Taxbot-R Cloud에서 최근 5년간 신고 내역 및<br>연도별 세액공제 한도가 적용된 세액공제액을 확인하실 수 있습니다.
+                    </p>
+                    <img class="w-100" src="/public/img/sec2_inner_3.png" alt="">
+                </div>
+                <div class="modal-footer flex-center-center">
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium" onclick="loginTaxbotCloudService()">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Taxbot-R Cloud 이동 modal end -->
+
+    <!--세액공제 서비스 신청 팝업 modal -->
+    <div class="modal fade" id="taxbotRCloudServiceReqModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">세액공제진단 서비스 신청</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="pb-1 text-center">
+                        통화 가능한 시간과 연락처를 남겨주시면<br>담당자가 직접 연락드리겠습니다.
+                    </p>
+                    <table class="table table-bordered th-color tbl-txt-left">
+                        <colgroup>
+                            <col width="30%"/>
+                            <col width="70%"/>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th>통화 가능시간</th>
+                            <td>
+                                <div class="cm-custom-select">
+                                    <select class="custom-select select-medium" id="callTimeByCloudHeader" name="">
+                                        <option value="9">9:00~9:59</option>
+                                        <option value="10">10:00~10:59</option>
+                                        <option value="11">11:00~11:59</option>
+                                        <option value="12">12:00~12:59</option>
+                                        <option value="13">13:00~13:59</option>
+                                        <option value="14">14:00~14:59</option>
+                                        <option value="15">15:00~15:59</option>
+                                        <option value="16">16:00~16:59</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td><input class="form-control medium" type="tel" id="callTelByCloudHeader" value="" size="23" placeholder="-없이 숫자만 입력해주세요."></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cm-btn-type basic-btn medium" data-dismiss="modal">취소</button>
+                    <button type="button" class="cm-btn-type positive-btn1-1 medium" onclick="taxbotRCloudServiceReqModalExct()">서비스 신청</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--세액공제 서비스 신청 팝업 modal end -->
+
+    <!--비정기 이벤트 모달-->
+    <div class="modal fade" id="certificateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <img class="w-px-498" src="/common/custom-assets/images/declareSend/pop_service_open.png" alt="">
+                    <button type="button" onclick="window.open('https://taxdoc.infotech.co.kr/index')" class="btn-external-link">
+                        TAXDOC 바로가기
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <input type="checkbox" value="checkbox" name="chkbox" id="endDateCheck_certificateModal"/>
+                    <label for="endDateCheck_certificateModal">오늘 하루 그만보기 </label>
+                    <a href="#none" class="btnClose" data-dismiss="modal" onclick="closeWin('certificateModal')">
+                        <span>[닫기]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 체크 후 삭제  -->
+    <!-- Taxbot-R 이용약관 -->
+    <div class="modal fade" id="taxbotR_UsageModal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title">Taxbot-R 서비스 이용약관</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="xi-close"></i>
+                    </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    본 서비스 이용약관은 인포텍코퍼레이션 주식회사(이하 ‘회사’라 함)가 Taxbot-R 서비스(이하 ‘서비스’라 함)를 이용하는 세무사업자고객(이하 ‘고객’이라 함)에게 제공하는
+                    모든 서비스의 이용에 관한 조건에 대해 정합니다.<br>
+                    <br>
+                    제1장 총 칙<br>
+                    <br>
+                    제1조 (목 적)<br>
+                    본 약관은 고객이 회사가 제공하는 ‘서비스’의 이용에 관한 기본적인 사항을 정함으로써 상호간에 권리∙의무 관계를 명확히 하는 것을 목적으로 합니다.<br>
+                    <br>
+                    제2조 (용어의 정의)<br>
+                    본 약관에서 사용하는 용어의 정의는 다음 각호와 같습니다.<br>
+                    1. “고객”이라 함은 회사의 홈페이지를 통해 가입을 하고, 본 약관에 따라 회사와 이용계약을 체결하여 유상으로 솔루션을 이용하는 고객을 말합니다.<br>
+                    2. “솔루션”이라 함은 고객이 서비스를 모바일 및 PC 온라인 상으로 이용할 수 있도록 회사가 제공하는 일체의 서비스의 집합을 말합니다.<br>
+                    3. “업그레이드”라 함은 솔루션의 성능, 기능 등을 개선하여 새로운 버전으로 변경시키는 것을 말합니다.<br>
+                    <br>
+                    제3조 (약관의 게시, 해석 등)<br>
+                    ① 회사는 본 약관의 내용을 고객이 언제든지 쉽게 확인할 수 있도록 홈페이지 또는 각 서비스 초기화면 기타 눈에 띄는 위치에 게시합니다.<br>
+                    ② 본 약관의 해석 또는 본 약관에서 정하지 않은 사항 등에 대하여는 관련 법령 및 상관례에 따릅니다.<br>
+                    <br>
+                    제4조 (이용계약의 체결)<br>
+                    ① 솔루션 이용계약(이하 ‘계약’이라 함)은 고객이 되려는 자(이하 ‘가입신청자’라 함)가 본 약관의 내용에 동의하고 회사가 이를 승낙한 사실을 표시함으로써 체결됩니다.<br>
+                    ② 전항의 승낙은 고객이 등록한 휴대전화번호에 회사가 정하는 방법으로 가입 완료 안내 통지 등의 방식으로 표시하며, 이 표시가 가입신청자에게 도달한 시점에 계약이 성립된 것으로
+                    봅니다.<br>
+                    ③ 회사는 다음 각 호의 어느 하나에 해당하는 경우에는 가입신청을 유보하거나 거부할 수 있으며, 추후 계약을 해지할 수 있습니다. 이 때 회사는 각 호의 내용을 판단하기 위하여
+                    가입신청자나 고객에게 적절한 자료를 요청할 수 있습니다.<br>
+                    1. 가입신청자가 솔루션을 이용할 수 있는 정상적인 사업자가 아닌 경우<br>
+                    2. 가입신청자가 가입신청에 필요한 정보를 제공하지 않거나 제공한 정보가 거짓인 경우<br>
+                    3. 가입신청자가 대리인으로서 신청하는 때에 적법한 대리권을 갖지 못한 경우<br>
+                    ④ 회사는 기술상 문제 또는 인력의 부족 등을 이유로 가입신청의 승낙을 유보할 수 있습니다.<br>
+                    ⑤ 회사는 가입신청이 제2항 또는 제3항에 해당하여 유보, 거부 또는 계약의 해지가 된 때에는 특별한 사정이 없는 한 그 사실을 가입신청자 또는 고객에게 알려야 합니다.<br>
+                    <br>
+                    제2장 계약의 내용<br>
+                    <br>
+                    제5조 (솔루션의 내용)<br>
+                    ① 솔루션의 세부 내용은 다음 각호와 같습니다.<br>
+                    1. 고객이 전자적으로 제공한 공동인증서를 이용한 홈택스, 위택스 정보 조회, 보관 및 발송<br>
+                    2. 고객이 세무업무에 관하여 제공한 정보의 처리 및 저장을 통한 각종 신고 및 등록<br>
+                    3. 고객이 위 각호의 정보를 제공하고 열람하는데 필요한 온라인 플랫폼의 제공<br>
+                    4. 고객과 회사가 위 각호 업무처리에 필요한 커뮤니케이션 수단<br>
+                    ② 회사는 고객의 동의 없이 전항 각호의 서비스를 거부할 수 없으며, 마찬가지로 고객은 별도의 계약 없이 전항 각호 외의 서비스를 요구할 수 없습니다.<br>
+                    ③ 제1항 각호 외에 추가 서비스가 필요한 경우, 고객은 이용계약의 체결과 동시에 또는 체결 후에 본 약관과 별개로 제시되는 약관에 따라 계약을 체결할 수 있습니다.<br>
+                    <br>
+                    제6조 (솔루션의 제공)<br>
+                    ① 회사는 고객이 언제든지 솔루션을 이용할 수 있도록 운영해야 합니다.<br>
+                    ② 전항에도 불구하고 회사는 다음 각호의 어느 하나에 해당하는 때에는 일정 시간 동안 솔루션의 제공을 중단할 수 있습니다.<br>
+                    1. 시스템 정기점검 또는 업그레이드를 위한 경우<br>
+                    2. 솔루션을 통한 서비스 및 업무처리를 거부하는 경우<br>
+                    3. 솔루션을 통해 지속적인 서비스 제공이 불가능한 경우<br>
+                    4. 기타 천재지변 등으로 정상적인 제공이 불가능한 경우<br>
+                    ③ 회사는 전항 제1호 내지 제4호의 중단이 예정되는 때에는 미리 그 사유와 기간을 고객에게 알려야 합니다. 전항 제4호의 중단은 그 사유가 종료되는 즉시 고객에게 알려야 합니다.<br>
+                    <br>
+                    제7조 (회사의 의무)<br>
+                    ① 회사는 고객에게 안정적인 솔루션을 계속 제공하기 위하여 노력하고, 본 약관 및 관련 법령의 내용을 준수해야 합니다.<br>
+                    ② 회사는 전항의 의무를 다하기 위하여 최적의 인력 및 시스템, 보안 등을 유지해야 합니다.<br>
+                    <br>
+                    제8조 (고객의 의무)<br>
+                    ① 고객은 경영지원업무를 원활하게 진행하기위해 회사가 요구하는 정확한 정보를 솔루션을 통해 제공해야 합니다.<br>
+                    ② 고객은 다음 각호의 어느 하나에 해당하는 행위를 해서는 안됩니다.<br>
+                    1. 허위 또는 도용한 정보의 제공<br>
+                    2. 공서양속에 반하는 정보의 제공<br>
+                    3. 회사의 업무를 방해하려는 행위<br>
+                    4. 솔루션의 결과물을 영리 목적으로 제3자에게 제공하는 행위<br>
+                    5. 기타 불법∙부당한 행위<br>
+                    <br>
+                    제3장 계약의 존속<br>
+                    <br>
+                    제9조 (계약기간)<br>
+                    ① 계약은 이용약관에 동의한 날로부터 효력을 가집니다.<br>
+                    ② 당사자 일방의 원인으로 계약을 계속하기 어려운 경우를 제외하고 계약은 계속됩니다.<br>
+                    <br>
+                    제10조 (계약의 변경)<br>
+                    ① 회사는 본 약관의 내용을 변경하고자 하는 경우 그 적용 내용을 미리 공지 게시판을 통해 알립니다. 다만 약관의 개정이 고객에게 불리한 내용을 담고 있는 경우에는 제15조의
+                    방법으로 알려야 합니다.<br>
+                    ② 회사는 고객이 14일 이내에 거부의 의사표시를 하지 않는 경우에는 개정된 약관에 동의한 것으로 봅니다.<br>
+                    ③ 전항의 기간 내에 고객이 거부의 의사를 표시한 때에는 그와 동시에 계약을 해지할 수도 있습니다.<br>
+                    <br>
+                    제11조 (계약 종료시의 의무)<br>
+                    고객은 서비스 해지를 통해 서비스 이용 계약을 종료할 수 있으며, 해지 시점에 고객의 정보는 즉시 파기됩니다.<br>
+                    <br>
+                    제4장 해지 및 손해배상<br>
+                    <br>
+                    제12조 (계약의 해지, 손해배상)<br>
+                    ① 고객은 계약의 해지를 요구할 수 있습니다. 회사는 고객의 요구에 필요한 절차를 안내해야 합니다.<br>
+                    ② 고객의 요청에 의한 계약의 해지의 경우 해당 고객은 익월 말까지 서비스 재가입이 제한됩니다.<br>
+                    ③ 당사자 일방이 계약에 규정된 의무를 위반하거나 불성실하게 이행하는 경우, 상대방은 그 시정이나 개선을 요구할 수 있으며, 그에 대하여 14일 이내에 귀책당사자의 시정 또는
+                    개선조치가 없는 경우에 상대방은 전자우편 또는 서면에 의한 통지로써 본 약관을 해지할 수 있습니다.<br>
+                    ④ 다음과 같은 사유가 있는 경우 상대방은 최고없이 계약을 해지할 수 있습니다.<br>
+                    1. 당사자 일방에게 화의, 회사정리절차의 개시 또는 파산의 신청이 있는 경우<br>
+                    2. 당사자 일방이 발행한 어음이나 수표가 지급 정지된 경우<br>
+                    3. 당사자 일방이 부도 또는 지급불능 등으로 인하여 사업의 정상적인 운영이 어렵다고 판단되는 경우<br>
+                    4. 고객이 솔루션을 통한 자료의 제공을 상습적으로 해태하거나 2개월 이상 연락이 두절된 경우<br>
+                    5. 고객이 회사에 지속적으로 악의적인 민원을 제기하고 문제가 해결된 후에도 지속적으로 민원을 제기하는 경우<br>
+                    6. 제6조 2항의 3호 내지 4호의 중단 사유가 발생하는 경우<br>
+                    ⑤ 본 조에 따른 해지의 효력은 이미 발생한 권리관계 및 일방의 귀책사유로 인한 손해배상청구권 등에 영향을 미치지 않습니다.<br>
+                    <br>
+                    제5장 기 타<br>
+                    <br>
+                    제13조 (통지의 방법)<br>
+                    ① 본 약관에 따라 고객에게 일정한 사항을 알릴 때에는 원칙적으로 고객이 등록한 전자우편 및 공지 게시판을 이용합니다.<br>
+                    ② 전항에도 불구하고 고객 전체를 대상으로 하거나 긴급한 사유가 발생한 경우에는 공지 게시판을 통하여 알릴 수 있습니다.<br>
+                    ③ 회사는 고객의 고의 또는 과실로 본 조의 통지를 인지하지 못한 경우에 발생하는 손해에 대하여 책임을 지지 않습니다.<br>
+                    <br>
+                    제14조 (비밀유지의무)<br>
+                    ① 각 당사자는 본 약관의 체결 및 이행과정에서 취득한 상대방의 영업비밀에 대하여, 계약기간 중은 물론이고 계약의 종료 후에도 제3자에게 유출하거나 다른 목적에 이용하여서는 안
+                    됩니다.<br>
+                    ② 전항을 위반하여 상대방에게 손해가 발생한 경우, 손해를 입은 당사자는 그 상대방에게 손해배상을 청구할 수 있습니다.<br>
+                    <br>
+                    제15조 (통지의무)<br>
+                    각 당사자는 본 약관에 규정된 사항 이외에도 계약의 이행에 중대한 영향을 미칠 수 있는 사유가 예견되는 경우 지체 없이 상대방에게 통지하여야 합니다.<br>
+                    <br>
+                    제16조 (권리∙의무의 양도 금지)<br>
+                    각 당사자는 상대방의 서면 동의 없이 본 약관상의 권리 또는 의무를 제3자에게 양도하거나 이전할 수 없습니다.<br>
+                    <br>
+                    제17조 (분쟁해결)<br>
+                    ① 본 약관과 관련하여 분쟁이 발생하는 경우 각 당사자는 원만한 해결을 위하여 서로 협력합니다.<br>
+                    ② 당사자 간에 제기된 소송은 대한민국법을 준거법으로 하며, 서울중앙지방법원이 배타적인 제1심 관할권을 갖습니다.<br>
+                    <br>
+                    부 칙<br>
+                    본 약관은 2022년 10월 10일부터 적용됩니다.<br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://kit.fontawesome.com/6584921572.js" crossorigin="anonymous"></script>
+
+    <!-- 필수 라이브러리 JS File -->
+    <script src="/public/js/lib/jquery.min-3.7.1-c9a1b0aa0167c8a4df724d18d06814a8.js"></script>
+    <script src="/public/js/lib/jquery.cookie.min-1.4.1-23d834419c7ccced820e192be7081228.js"></script>
+    <script src="/public/js/lib/jquery-ui.min-9d5f1f89a13c07d0f24332c9fca2b24c.js"></script>
+    <script src="/public/js/lib/jquery.counterup.min-28225c8fb117c6dd827451c5d0037c8a.js"></script>
+
+    <!-- BEGIN: Theme JS-->
+    <script src="/common/app-assets/vendors/js/vendors.min-c774ee3e7ff874b6a81916d8d392b365.js"></script>
+    <script src="/common/app-assets/js/core/app-menu.min-d283d47386e778f8b463fd60fece9e66.js"></script>
+    <script src="/common/app-assets/js/core/app.min-cf2a2b81e029f678b6d4bac6faff6937.js"></script>
+    <script src="/common/app-assets/js/scripts/customizer.min-30d00c1bde7251b6124f1bbf5b9e874a.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- public 공용 JS File -->
+    <script src="/public/js/lib/sweetalert2.all.min-8cfd6a3ce1ab59addb8c5fdc9b039022.js"></script>
+    <script src="/public/js/service/common-90ec39445f8be86b865c1214db6eb6e8.js"></script>
+    <script src="/public/js/service/util-2698dc888f5ce7e4fec7b1206c764d14.js"></script>
+    <script src="/public/js/service/sweetalert-48391ae138b9ff06d01cf7237c3c0d7f.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z6SRLJ5F5"></script>
+    <script>
+        /* <![CDATA[ */
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8Z6SRLJ5F5');
+
+        $(document).ready(function() {
+            $(document).on('mousedown', 'a', function () {
+                gtag('event', 'button_click', {
+                    'menu_nm': $('.page_title_right').text().trim()||window.location.pathname,
+                    'menu_sub': $('.on').text().trim(),
+                    'click_target': $(this).text().trim()||$(this).attr('href')
+                });
+                userAccess(($('.page_title_right').text().trim()||window.location.pathname) + "#" + $('.on').text().trim() + "#" + ($(this).text().trim()||$(this).attr('href')));
+            });
+            $(document).on('mousedown', 'button', function () {
+                gtag('event', 'button_click', {
+                    'menu_nm': $('.page_title_right').text().trim()||window.location.pathname,
+                    'menu_sub': $('.on').text().trim(),
+                    'click_target': $(this).text().trim()
+                });
+                userAccess(($('.page_title_right').text().trim()||window.location.pathname) + "#" + $('.on').text().trim() + "#" + $(this).text().trim());
+            });
+        });
+      /* ]]> */
+    </script>
+
+    
+    <script type="text/javascript" src="/public/js/service/pdf-mobile-07968324dc6655b54f8ef554df5fa3ca.js"></script>
+
+
+
+
+    <div class="main-bg-color min-vh-100">
+        <div class="mobile-device-item">
+            <div class="inner-item text-center">
+                <input id="taxCd" type="hidden">
+                <input id="sendId" value="1567" type="hidden">
+                <h5 class="logo mb-1" id="taxFirmName"></h5>
+                <div class="mobile-con">
+                    <div class="mobile-info">
+                        <h5 class="info-tit text-center"><b class="point-color" id="customerName"></b>님의<br><span id="taxYearMonth"></span></h5>
+                        <div id="pdfViewSubTitle">
+                            <div class="info-con flex-center-between">
+                                <span class="txt">납부기한</span>
+                                <span class="txt"><b id="dueDate"></b></span>
+                            </div>
+                            <div class="info-con flex-center-between">
+                                <span class="txt">총 납부세액</span>
+                                <span class="txt"><b id="totalAmount"></b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-con bg-white" id="paymentPdfListView" style="overflow-y: scroll;height: calc(100vh - 226px);">
+                    <div class="mobile-btn">
+                        <div class="tit-box flex-center-between">
+                            <div class="flex-center-start">
+                                <p class="tit mr-05">납부서</p><p class="cm-txt d-none" id="totalPaySlipCount"><!--(총 <span class="point-color">2</span>종)--></p>
+                            </div>
+                            <p class="d-none point-color cursor-pointer" id="account" onclick="pdfListViewVAN();">가상계좌번호보기</p>
+                        </div>
+                        <div id="paySlipArea">
+                        </div>
+                    </div>
+                    <div class="mobile-btn" id="etcAreaWrap">
+                        <div class="tit-box flex-center-between">
+                            <span class="tit">기타서류</span>
+                        </div>
+                        <div id="etcArea">
+                            <a class="mobile-down type-02" id="pdfDeclare" onclick="showEtcPdf('hometax', 'declares');">
+                                <div class="txt-box">
+                                    <span class="txt">(국세) 신고서</span>
+                                </div>
+                                <div class="icon-box">
+                                    <i class="feather" data-feather="download"></i>
+                                </div>
+                            </a>
+                            <a class="mobile-down type-02" id="pdfReceipt" onclick="showEtcPdf('hometax', 'receipts');">
+                                <div class="txt-box">
+                                    <span class="txt">(국세) 접수증</span>
+                                </div>
+                                <div class="icon-box">
+                                    <i class="feather" data-feather="download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 민원증명서류보기 -->
+                <div class="mobile-con bg-white d-none" id="etcPdfLsitView">
+                    <div class="mobile-btn">
+                        <div class="tit-box flex-center-between">
+                            <div class="flex-center-start">
+                                <p class="tit mr-05" id="etcPdfDocName">민원증명</p><p class="cm-txt d-none" id="totalDocsCount"></p>
+                            </div>
+                        </div>
+                        <div id="certDocsArea"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://kit.fontawesome.com/6584921572.js" crossorigin="anonymous"></script>
+
+<!-- 필수 라이브러리 JS File -->
+<script src="https://taxbot.infotech.co.kr/public/js/lib/jquery.min-3.7.1-c9a1b0aa0167c8a4df724d18d06814a8.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/lib/jquery.cookie.min-1.4.1-23d834419c7ccced820e192be7081228.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/lib/jquery-ui.min-9d5f1f89a13c07d0f24332c9fca2b24c.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/lib/jquery.counterup.min-28225c8fb117c6dd827451c5d0037c8a.js"></script>
+
+<!-- BEGIN: Theme JS-->
+<script src="https://taxbot.infotech.co.kr/common/app-assets/vendors/js/vendors.min-c774ee3e7ff874b6a81916d8d392b365.js"></script>
+<script src="https://taxbot.infotech.co.kr/common/app-assets/js/core/app-menu.min-d283d47386e778f8b463fd60fece9e66.js"></script>
+<script src="https://taxbot.infotech.co.kr/common/app-assets/js/core/app.min-cf2a2b81e029f678b6d4bac6faff6937.js"></script>
+<script src="https://taxbot.infotech.co.kr/common/app-assets/js/scripts/customizer.min-30d00c1bde7251b6124f1bbf5b9e874a.js"></script>
+<!-- END: Theme JS-->
+
+<!-- public 공용 JS File -->
+<script src="https://taxbot.infotech.co.kr/public/js/lib/sweetalert2.all.min-8cfd6a3ce1ab59addb8c5fdc9b039022.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/service/common-90ec39445f8be86b865c1214db6eb6e8.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/service/util-2698dc888f5ce7e4fec7b1206c764d14.js"></script>
+<script src="https://taxbot.infotech.co.kr/public/js/service/sweetalert-48391ae138b9ff06d01cf7237c3c0d7f.js"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z6SRLJ5F5"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/lib/dropzone.min-3e760acc2cccd25aa9945f900bdbdaab.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/dropzone.min-8ac3214577a86644878b6f4099461ab3.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/sendModal-7cfdb151d77c7c9319308e48cfb2c6b7.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/declareSend/customer/customerInfo-b7be302302c9efe7af46cd0ca73d04fa.js"></script>
+
+
+
+<!-- private 공용 JS File -->
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/code-a75a53c2689e572450c3f227e249ef04.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/cert-4e9886c765cf00d46fa0ddcd27846a2a.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/header-8c9afd617e1acc5e885415168c26cc6e.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/common-86c6c75060632aaa8c049dd336f27b34.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/service/common/loginCheckModal-ebf6ee0c078c9d79dcc9de6b26371cf7.js"></script>
+
+<!--excel 다운로드-->
+<script src="https://taxbot.infotech.co.kr/private/assets/js/lib/xlsx.full.min-96f35e06d33725dfff761ff95b98418e.js"></script>
+<script src="https://taxbot.infotech.co.kr/private/assets/js/lib/FileSaver.min-988ed42168dce8f3315a1c46f188ef4c.js"></script>
+</body>
+</html>
